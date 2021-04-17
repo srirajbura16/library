@@ -16,7 +16,8 @@ const book4 = new Book('book4', 'author4', 132, true)
 myLibrary.push(sapiens, book2, book3, book4)
 
 //Selectors
-const main = document.querySelector('main');
+const main = document.querySelector('main')
+const form = document.querySelector('.form')
 
 //Functions
 function displayBooks(){
@@ -33,12 +34,23 @@ function displayBooks(){
     main.appendChild(bookEle)
   })
 }
-
 displayBooks()
 
-function addBookToLibrary(){
 
+function addBookToLibrary(title, author, pages, completed){
+  const newBook = new Book(title, author, pages, completed)
+  myLibrary.push(newBook)
+  displayBooks()
 }
+
+//EventListeners
+form.addEventListener('submit', function(e){
+  e.preventDefault()
+  const title = document.querySelector('#title').value
+  const author = document.querySelector('#author').value
+  const pages = document.querySelector('#pages').value
+  addBookToLibrary(title, author, pages, false)
+})
 
 
 //Modal
