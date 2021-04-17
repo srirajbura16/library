@@ -16,7 +16,7 @@ const book4 = new Book('book4', 'author4', 132, true)
 myLibrary.push(sapiens, book2, book3, book4)
 
 //Selectors
-const main = document.querySelector('main')
+const main = document.querySelector('main');
 
 //Functions
 function displayBooks(){
@@ -28,7 +28,7 @@ function displayBooks(){
     <h1>${book.title}</h1>
     <p>author: ${book.author}</p>
     <p>pages: ${book.pages}</p>
-    <p>completed: ${book.completed}</p>
+    completed: <input type="checkbox">${book.completed}
     `
     main.appendChild(bookEle)
   })
@@ -39,3 +39,17 @@ displayBooks()
 function addBookToLibrary(){
 
 }
+
+
+//Modal
+const modal = document.querySelector('.modal')
+const addBookBtn = document.querySelector('.add-book-btn')
+const closeBtn = document.querySelector('.close')
+
+addBookBtn.addEventListener('click', function(){
+  modal.style.display = 'block'
+})
+
+closeBtn.addEventListener('click', function(){
+  modal.style.display = 'none'
+})

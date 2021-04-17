@@ -4,14 +4,39 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
   <title>Library</title>
 </head>
 <body>
   <nav>
     <h1>Library</h1>
-    <button>+ Add Book</button>
+    <button class="add-book-btn">+ Add Book</button>
   </nav>
   <main></main>
+
+  <div class="modal">
+    <form class="modal-content">
+      <p class="close">&times;</p>
+      <h1>Add Book</h1>
+      <div class="user-input">
+        <label for="">Title</label><br>
+        <input type="text" id="title" required>
+      </div>
+      <div class="user-input">
+        <label for="">Author</label><br>
+        <input type="text" id="author" required>
+      </div>
+      <div class="user-input">
+        <label for="">Pages</label><br>
+        <input type="number" id="pages" required>
+      </div>
+      <div class="user-input">
+        <label for="">Read?</label>
+        <input type="checkbox">
+      </div>
+      <button type="submit" id="submit">Submit</button>
+    </form>
+  </div>
 
   <script src="library.js"></script>
 </body>
