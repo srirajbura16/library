@@ -15,35 +15,64 @@ const book3 = new Book('book3', 'author3', 323, false)
 const book4 = new Book('book4', 'author4', 132, true)
 myLibrary.push(sapiens, book2, book3, book4)
 
-//Selectors
+//---------------DISPLAY-BOOKS-----------------------
 const main = document.querySelector('main')
 const form = document.querySelector('.form')
+let deleteBtns;
 
-//Functions
 function displayBooks(){
+  let dataIndex = 0
+  main.innerHTML = ''
   myLibrary.forEach(book => {
     const bookEle = document.createElement('div')
     bookEle.classList.add('book')
+    bookEle.setAttribute('data-index', dataIndex)
 
     bookEle.innerHTML = `
     <h1>${book.title}</h1>
     <p>author: ${book.author}</p>
     <p>pages: ${book.pages}</p>
     completed: <input type="checkbox">${book.completed}
+    <button class="delete">DELETE</button>
     `
     main.appendChild(bookEle)
+    dataIndex++
   })
+  deleteBtns = assignDeleteBtns()
+  addEventToDeleteBtn()
 }
 displayBooks()
+//--------------------------------------------------------
 
 
+
+//-------------------DELETE-BOOK-----------------------------
+function deleteBook(index){
+  myLibrary.splice(index, 1)
+  displayBooks()
+}
+
+function assignDeleteBtns(){
+  return document.querySelectorAll('.book .delete')
+}
+
+function addEventToDeleteBtn(){
+  deleteBtns.forEach(button => {
+    button.addEventListener('click', function(e) {
+      let index = button.parentNode.dataset.index
+      deleteBook(index)
+      console.log(deleteBtns)
+    })
+  })
+}
+
+//----------------Add-BOOk-----------------------------------
 function addBookToLibrary(title, author, pages, completed){
   const newBook = new Book(title, author, pages, completed)
   myLibrary.push(newBook)
   displayBooks()
 }
 
-//EventListeners
 form.addEventListener('submit', function(e){
   e.preventDefault()
   const title = document.querySelector('#title').value
@@ -51,9 +80,10 @@ form.addEventListener('submit', function(e){
   const pages = document.querySelector('#pages').value
   addBookToLibrary(title, author, pages, false)
 })
+//---------------------------------------------------------------
 
 
-//Modal
+//---------------POPUP-MODAL----------------------------
 const modal = document.querySelector('.modal')
 const addBookBtn = document.querySelector('.add-book-btn')
 const closeBtn = document.querySelector('.close')
