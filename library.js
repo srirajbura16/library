@@ -41,10 +41,7 @@ function displayBooks(){
   deleteBtns = assignDeleteBtns()
   addEventToDeleteBtn()
 }
-displayBooks()
-//--------------------------------------------------------
-
-
+displayBooks() //inital display
 
 //-------------------DELETE-BOOK-----------------------------
 function deleteBook(index){
@@ -66,7 +63,7 @@ function addEventToDeleteBtn(){
   })
 }
 
-//----------------Add-BOOk-----------------------------------
+//----------------ADD-BOOK-----------------------------------
 function addBookToLibrary(title, author, pages, completed){
   const newBook = new Book(title, author, pages, completed)
   myLibrary.push(newBook)
@@ -79,9 +76,8 @@ form.addEventListener('submit', function(e){
   const author = document.querySelector('#author').value
   const pages = document.querySelector('#pages').value
   addBookToLibrary(title, author, pages, false)
+  form.reset()
 })
-//---------------------------------------------------------------
-
 
 //---------------POPUP-MODAL----------------------------
 const modal = document.querySelector('.modal')
