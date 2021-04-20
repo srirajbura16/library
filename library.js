@@ -32,7 +32,7 @@ function displayBooks(){
     <h1>${book.title}</h1>
     <p>author: ${book.author}</p>
     <p>pages: ${book.pages}</p>
-    completed: <input type="checkbox">${book.completed}
+    completed: <input type="checkbox">
     <button class="delete">DELETE</button>
     `
     main.appendChild(bookEle)
