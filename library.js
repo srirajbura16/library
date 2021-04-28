@@ -1,4 +1,7 @@
 let myLibrary = []
+const main = document.querySelector('main')
+const form = document.querySelector('.form')
+let deleteBtns;
 
 function Book(title, author, pages, completed){
   this.title = title
@@ -16,14 +19,10 @@ const book4 = new Book('book4', 'author4', 132, true)
 myLibrary.push(sapiens, book2, book3, book4)
 
 //---------------DISPLAY-BOOKS-----------------------
-const main = document.querySelector('main')
-const form = document.querySelector('.form')
-let deleteBtns;
 
 function displayBooks(){
-  let dataIndex = 0
   main.innerHTML = ''
-  myLibrary.forEach(book => {
+  myLibrary.forEach((book, dataIndex) => {
     const bookEle = document.createElement('div')
     bookEle.classList.add('book')
     bookEle.setAttribute('data-index', dataIndex)
@@ -36,7 +35,6 @@ function displayBooks(){
     <button class="delete">DELETE</button>
     `
     main.appendChild(bookEle)
-    dataIndex++
   })
   deleteBtns = assignDeleteBtns()
   addEventToDeleteBtn()
